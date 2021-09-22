@@ -14,17 +14,17 @@ module.exports = {
 
         //Checking for the voicechannel and permissions (you can add more permissions if you like).
         const voice_channel = message.member.voice.channel;
-        if (!voice_channel) return message.channel.send('You need to be in a channel to execute this command!');
+        if (!voice_channel) return message.channel.send('Harus ada di voice channel dulu baru bisa 😛');
         const permissions = voice_channel.permissionsFor(message.client.user);
-        if (!permissions.has('CONNECT')) return message.channel.send('You dont have the correct permissins');
-        if (!permissions.has('SPEAK')) return message.channel.send('You dont have the correct permissins');
+        if (!permissions.has('CONNECT')) return message.channel.send('Cek permission lagi, gak dikasih ijin lu');
+        if (!permissions.has('SPEAK')) return message.channel.send('Cek permission lagi, gak dikasih ijin lu');
 
         //This is our server queue. We are getting this server queue from the global queue.
         const server_queue = queue.get(message.guild.id);
 
         //If the user has used the play command
         if (cmd === 'play'|| cmd === 'p') {
-            if (!args.length) return message.channel.send('You need to send the second argument!');
+            if (!args.length) return message.channel.send('kasih keyword nya dung..');
             let song = {};
 
             //If the first argument is a link. Set the song object to have two keys. Title and URl.
@@ -33,7 +33,7 @@ module.exports = {
                 song = { title: song_info.videoDetails.title, url: song_info.videoDetails.video_url }
             } else {
                 //If there was no link, we use keywords to search for a video. Set the song object to have two keys. Title and URl.
-                const video_finder = async (query) =>{
+                const video_finder = async (query) => {
                     const video_result = await ytSearch(query);
                     return (video_result.videos.length > 1) ? video_result.videos[0] : null;
                 }
@@ -42,7 +42,7 @@ module.exports = {
                 if (video){
                     song = { title: video.title, url: video.url }
                 } else {
-                     message.channel.send('Error finding video.');
+                    message.channel.send('Error, videonya ga ketemu.');
                 }
             }
 
@@ -67,7 +67,7 @@ module.exports = {
                     video_player(message.guild, queue_constructor.songs[0]);
                 } catch (err) {
                     queue.delete(message.guild.id);
-                    message.channel.send('There was an error connecting!');
+                    message.channel.send('Connecting Error!');
                     throw err;
                 }
             } else {
@@ -77,7 +77,7 @@ module.exports = {
 
         } 
 
-        // new line
+        // queue command
         else if (cmd === 'queue' || cmd === 'q') {
 
             if (!server_queue) return message.channel.send("❌ **No songs currently in the queue**");
@@ -128,7 +128,7 @@ module.exports = {
     
 }
 
-// queue
+// queue function
 function generateQueueEmbed(message, queue) {
     const embeds = [];
     let k = 10;
@@ -167,7 +167,7 @@ const video_player = async (guild, song) => {
 }
 
 const skip_song = (message, server_queue) => {
-    if (!message.member.voice.channel) return message.channel.send('You need to be in a channel to execute this command!');
+    if (!message.member.voice.channel) return message.channel.send('Harus ada di voice channel dulu baru bisa 😛');
     if(!server_queue) {
         return message.channel.send(`There are no songs in queue 😔`);
     }
@@ -175,7 +175,7 @@ const skip_song = (message, server_queue) => {
 }
 
 const stop_song = (message, server_queue) => {
-    if (!message.member.voice.channel) return message.channel.send('You need to be in a channel to execute this command!');
+    if (!message.member.voice.channel) return message.channel.send('Harus ada di voice channel dulu baru bisa 😛');
     server_queue.songs = [];
     server_queue.connection.dispatcher.end();
     message.channel.send('Stopping and Leaving the Voice Channel.. 😥');
