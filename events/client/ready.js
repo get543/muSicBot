@@ -7,15 +7,14 @@ module.exports = (Discord, client, message) => {
             type: 'LISTENING'
         },
         status: 'idle'
-    });
+    })
 
     client.on('message', message => {
-    
         // jika bot di mention
-        if (message.mentions.has(client.user)) {
-            return message.channel.send(`ini prefix gw ***?***  oke`);
+        if (message.mentions.has('830398358719954944')) {
+            message.channel.send(`ini prefix gw ***?***  oke`);
         };
-        
+
         // message content
         if (message.content.toLowerCase() == 'oke') {
             message.channel.send('Sip 👍');
@@ -29,4 +28,4 @@ module.exports = (Discord, client, message) => {
             message.channel.send('Sip 👍');
         };
     });
-};
+}
