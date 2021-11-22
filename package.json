@@ -1,10 +1,11 @@
 {
-  "name": "botv2",
+  "name": "simple-music-bot",
   "version": "2.0.0",
-  "description": "",
+  "description": "just a simple discord music bot",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "Din",
   "license": "ISC",
@@ -12,9 +13,9 @@
     "@discordjs/opus": "^0.5.0",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
+    "ffmpeg-static": "^4.4.0",
     "fs": "0.0.1-security",
     "yt-search": "^2.7.3",
-    "ytdl-core": "^4.9.1",
-    "ffmpeg-static": "^4.4.0"
+    "ytdl-core": "^4.9.1"
   }
 }
