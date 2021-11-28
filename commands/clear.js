@@ -1,5 +1,3 @@
-const message = require("../events/guild/message");
-
 module.exports = {
     name: 'clear',
     aliases: ['c', 'cl'],
