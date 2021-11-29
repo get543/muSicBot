@@ -16,16 +16,10 @@ module.exports = (Discord, client, message) => {
         };
 
         // message content
-        if (message.content.toLowerCase() == 'oke') {
+        const sip = ["oke", "ok", "og", "oge", "okay"];
+        
+        if (sip.includes(message.content.toLowerCase())) {
             message.channel.send('Sip 👍');
-        } else if (message.content.toLowerCase() == 'ok') {
-            message.channel.send('Sip 👍');
-        } else if (message.content.toLowerCase() == 'og') {
-            message.channel.send('Sip 👍');
-        } else if (message.content.toLowerCase() == 'oge') {
-            message.channel.send('Sip 👍');
-        } else if (message.content.toLowerCase() == 'okay') {
-            message.channel.send('Sip 👍');
-        };
+        }
     });
 }
