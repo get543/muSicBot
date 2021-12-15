@@ -71,7 +71,7 @@ function generateQueueEmbed(message, queue) {
             .setTitle("Song Queue \n")
             .setThumbnail(message.guild.iconURL())
             .setColor("#F8AA2A")
-            .setDescription(`**Current Song - [${queue[0].title}](${queue[0].url})**\n\n\n${info}`)
+            .setDescription(`**Current Song : \n [${queue[0].title}](${queue[0].url})**\n\n\n${info}`)
             .setTimestamp();
         embeds.push(embed);
     }
