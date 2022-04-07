@@ -1,3 +1,4 @@
+const keepAlive = require('./server');
 const Discord = require('discord.js');
 require('dotenv').config();
 const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"]});
@@ -11,3 +12,5 @@ client.queue = new Map();
 });
 
 client.login(process.env.DISCORD_TOKEN); 
+
+keepAlive();
