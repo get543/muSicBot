@@ -17,6 +17,6 @@
     "ffmpeg-static": "^4.4.0",
     "fs": "0.0.1-security",
     "yt-search": "^2.7.3",
-    "ytdl-core": "^4.9.1"
+    "ytdl-core": "^4.11.0"
   }
 }
