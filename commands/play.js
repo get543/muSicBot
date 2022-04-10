@@ -6,14 +6,14 @@ module.exports = {
     aliases: ['p'],
     description: 'Playing music command',
     async execute(client, message, args, cmd, Discord) {
-
-        // Checking for permissions
+        // Checking permissions
         const voice_channel = message.member.voice.channel;
-        if (!voice_channel) return message.channel.send('Harus ada di voice channel dulu baru bisa 😛');
+        if (!voice_channel) return message.channel.send('You need to be in a voice channel to use that command 😛');
+
         const permissions = voice_channel.permissionsFor(message.client.user);
-        if (!permissions.has('CONNECT')) return message.channel.send('Cek permission lagi, gak dikasih ijin lu');
-        if (!permissions.has('SPEAK')) return message.channel.send('Cek permission lagi, gak dikasih ijin lu');
-        
+        if (!permissions.has('CONNECT')) return message.channel.send('The bot doesn\'t have the permission to `connect` in a voice channel');
+        if (!permissions.has('SPEAK')) return message.channel.send('The bot doesn\'t have the permission to `speak` in a voice channel');
+
         const video_player = async (guild, song) => {
             const song_queue = client.queue.get(guild.id);
         
@@ -34,8 +34,7 @@ module.exports = {
 
         const server_queue = client.queue.get(message.guild.id);
 
-
-        if (!args.length) return message.channel.send('kasih keyword nya dung..');
+        if (!args.length) return message.channel.send('Enter a keyword');
         let song = {};
 
         // If the first argument is a link. Set the song object to have two keys. Title and URl.
@@ -53,7 +52,7 @@ module.exports = {
             if (video) {
                 song = { title: video.title, url: video.url }
             } else {
-                message.channel.send('Error, videonya ga ketemu.');
+                message.channel.send('Error, can\'t find the video.');
             }
         }
 
