@@ -8,21 +8,4 @@ module.exports = (Discord, client, message) => {
     },
     status: "idle",
   });
-
-  client.on("message", (message) => {
-    // tidak termasuk @here dan @everyone
-    if (message.content.includes("@here") || message.content.includes("@everyone")) return false;
-
-    // jika bot di mention
-    if (message.mentions.has("830398358719954944")) {
-      message.channel.send(`ini prefix gw ***?***  oke`);
-    }
-
-    // message content
-    const sip = ["oke", "ok", "og", "oge", "okay"];
-
-    if (sip.includes(message.content.toLowerCase())) {
-      message.channel.send("Sip 👍");
-    }
-  });
 };
