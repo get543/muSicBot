@@ -8,7 +8,9 @@ server.all(`/`, (req, res) => {
 
 function keepAlive() {
   server.listen(3000, () => {
-    console.log(`Server is now ready! | ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`);
+    console.log(
+      `Server is now ready! | ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`
+    );
   });
 }
 

@@ -1,20 +1,20 @@
 module.exports = (Discord, client, message) => {
-  // tidak termasuk @here dan @everyone
+  // exclude @here dan @everyone
   if (
-    message.content.includes('@here') ||
-    message.content.includes('@everyone')
+    message.content.includes("@here") ||
+    message.content.includes("@everyone")
   )
     return false;
 
-  // jika bot di mention
-  if (message.mentions.has('830398358719954944')) {
+  // bot got mentioned
+  if (message.mentions.has("830398358719954944")) {
     message.channel.send(`ini prefix gw ***?***  oke`);
   }
 
   // message content
-  const sip = ['oke', 'ok', 'og', 'oge', 'okay'];
+  const sip = ["oke", "ok", "og", "oge", "okay"];
 
   if (sip.includes(message.content.toLowerCase())) {
-    message.channel.send('Sip 👍');
+    message.channel.send("Sip 👍");
   }
 };

@@ -1,17 +1,19 @@
 module.exports = (Discord, client, message) => {
-  const prefix = "?";
+  const prefix = process.env.PREFIX;
 
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 
   const args = message.content.slice(prefix.length).split(/ +/);
   const cmd = args.shift().toLowerCase();
 
-  const command = client.commands.get(cmd) || client.commands.find((a) => a.aliases && a.aliases.includes(cmd));
+  const command =
+    client.commands.get(cmd) ||
+    client.commands.find((a) => a.aliases && a.aliases.includes(cmd));
 
   try {
     command.execute(client, message, args, cmd, Discord);
-  } catch (err) {
+  } catch (error) {
     message.reply("ga bisa error");
-    console.log(err);
+    console.error(error);
   }
 };

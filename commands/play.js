@@ -8,11 +8,20 @@ module.exports = {
   async execute(client, message, args, cmd, Discord) {
     // Checking permissions
     const voice_channel = message.member.voice.channel;
-    if (!voice_channel) return message.channel.send("You need to be in a voice channel to use that command 😛");
+    if (!voice_channel)
+      return message.channel.send(
+        "You need to be in a voice channel to use that command 😛"
+      );
 
     const permissions = voice_channel.permissionsFor(message.client.user);
-    if (!permissions.has("CONNECT")) return message.channel.send("The bot doesn't have the permission to `connect` in a voice channel");
-    if (!permissions.has("SPEAK")) return message.channel.send("The bot doesn't have the permission to `speak` in a voice channel");
+    if (!permissions.has("CONNECT"))
+      return message.channel.send(
+        "The bot doesn't have the permission to `connect` in a voice channel"
+      );
+    if (!permissions.has("SPEAK"))
+      return message.channel.send(
+        "The bot doesn't have the permission to `speak` in a voice channel"
+      );
 
     const video_player = async (guild, song) => {
       const song_queue = client.queue.get(guild.id);
@@ -24,10 +33,12 @@ module.exports = {
         return;
       }
       const stream = ytdl(song.url, { filter: "audioonly" });
-      song_queue.connection.play(stream, { seek: 0, volume: 0.5 }).on("finish", () => {
-        song_queue.songs.shift();
-        video_player(guild, song_queue.songs[0]);
-      });
+      song_queue.connection
+        .play(stream, { seek: 0, volume: 0.5 })
+        .on("finish", () => {
+          song_queue.songs.shift();
+          video_player(guild, song_queue.songs[0]);
+        });
       await song_queue.text_channel.send(`🎶 Now playing **${song.title}**`);
     };
 
@@ -39,7 +50,10 @@ module.exports = {
     // If the first argument is a link. Set the song object to have two keys. Title and URl.
     if (ytdl.validateURL(args[0])) {
       const song_info = await ytdl.getInfo(args[0]);
-      song = { title: song_info.videoDetails.title, url: song_info.videoDetails.video_url };
+      song = {
+        title: song_info.videoDetails.title,
+        url: song_info.videoDetails.video_url,
+      };
     } else {
       // If there was no link, we use keywords to search for a video. Set the song object to have two keys. Title and URl.
       const video_finder = async (query) => {
