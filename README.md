@@ -1,13 +1,14 @@
 # 🎶 muSicBot
 
-Basic Discord Music Bot created using [ytdl-core](https://www.npmjs.com/package/ytdl-core) and [yt-search](https://www.npmjs.com/package/yt-search)
+Discord Music Bot created using [DisTube](https://distube.js.org/#/)
 
 # 🎉 Features
 
-- [x] play
-- [x] queue
-- [x] skip
-- [x] stop
+- [x] Slash Commands
+- [x] YouTube, Spotify, SoundCloud support
+- [x] Dynamic Queue System
+
+For more info you can do `/help` for all available music commands
 
 # 🤳 Self Host
 
@@ -20,6 +21,10 @@ Basic Discord Music Bot created using [ytdl-core](https://www.npmjs.com/package/
 
 ```
 DISCORD_TOKEN = <paste-your-bot-token-here>
+
+clientID = <bot's id>
+
+guildID = <server's id>
 ```
 
 3. Open terminal and navigate to the project folder

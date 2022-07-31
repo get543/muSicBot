@@ -1,21 +1,28 @@
+const fs = require("fs");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord.js");
 
-module.exports = {
-  name: "ready",
-  once: true,
-  async execute(client) {
-    console.log(`${client.user.username} is Online!`);
+module.exports = (client) => {
+  client.handleCommands = async (commandFolders) => {
+    for (const folder of commandFolders) {
+      const commandFiles = fs
+        .readdirSync(`./commands/${folder}`)
+        .filter((file) => file.endsWith(".js"));
 
-    client.user.setPresence({
-      activities: [
-        {
-          name: "tag me",
-          type: "LISTENING",
-        },
-      ],
-      status: "idle",
-    });
+      for (const file of commandFiles) {
+        const command = require(`../commands/${folder}/${file}`);
+        // Set a new item in the Collection
+        // With the key as the command name and the value as the exported module
+        client.commandArray.push(command.data.toJSON());
+        client.commands.set(command.data.name, command);
+        console.table([
+          {
+            "Command Name": command.data.name,
+            "Command Description": command.data.description,
+          },
+        ]);
+      }
+    }
 
     const rest = new REST({ version: "10" }).setToken(
       process.env.DISCORD_TOKEN
@@ -60,5 +67,5 @@ module.exports = {
         }
       })();
     }
-  },
+  };
 };
