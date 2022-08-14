@@ -15,7 +15,7 @@ module.exports = async (client) => {
     nsfw: true,
     ytdlOptions: {
       quality: "highestaudio",
-      format: "audioonly",
+      filter: "audioonly",
     },
     plugins: [
       new SpotifyPlugin({ emitEventsAfterFetching: true }),
