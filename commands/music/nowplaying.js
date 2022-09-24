@@ -34,7 +34,7 @@ module.exports = {
       const finalTotal = song.formattedDuration;
 
       const npEmbed = new Discord.EmbedBuilder()
-        .setColor(0x7FFF00)
+        .setColor(0x7fff00)
         .setAuthor({ name: "🎵 Now Playing 🎵" })
         .setTitle(song.name)
         .setURL(song.url)

@@ -66,7 +66,7 @@ module.exports = {
         url: "https://cf.shopee.co.id/file/e75559dfb6f7fb15db4873b5b760abb4",
       })
       .setDescription("Here are the list of music commands")
-      .setColor(0xF08080)
+      .setColor(0xf08080)
       .addFields([
         {
           name: "/autoplay",

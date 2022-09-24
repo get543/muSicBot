@@ -6,7 +6,7 @@ module.exports = {
     .setDescription("Run this to measure my ping."),
   async execute(interaction, client) {
     const embed = new Discord.EmbedBuilder()
-      .setColor(0x38761D)
+      .setColor(0x38761d)
       .setTimestamp()
       .setTitle("🏓 ╎ Pong!")
       .setDescription(
