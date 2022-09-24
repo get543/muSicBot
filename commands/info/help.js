@@ -24,7 +24,7 @@ module.exports = {
         .setDescription(
           "The code is on github [this](https://github.com/get543/muSicBot) page. \nYou can also host it yourself."
         )
-        .setColor("#ff0000")
+        .setColor(0xf6441d)
         .addFields([
           { name: "/ping", value: "pong" },
           { name: "/hai", value: "say hai to the bot" },
@@ -66,7 +66,7 @@ module.exports = {
         url: "https://cf.shopee.co.id/file/e75559dfb6f7fb15db4873b5b760abb4",
       })
       .setDescription("Here are the list of music commands")
-      .setColor("#F08080")
+      .setColor(0xF08080)
       .addFields([
         {
           name: "/autoplay",

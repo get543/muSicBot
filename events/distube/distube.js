@@ -41,7 +41,7 @@ module.exports = async (client) => {
     //     .setAuthor({ text: "Added Playlist" })
     //     .setTitle(playlist.name)
     //     .setURL(playlist.url)
-    //     .setColor("#7FFF00")
+    //     .setColor(0x7FFF00)
     //     .setThumbnail(playlist.thumbnail)
     //     .setTimestamp()
     //     .setFooter({
@@ -53,7 +53,7 @@ module.exports = async (client) => {
     .on("error", (channel, e) => {
       const errEmbed = new Discord.EmbedBuilder()
         .setTitle("An Error Encountered")
-        .setColor("RED")
+        .setColor(0xf83c14)
         .setDescription(e.toString().slice(0, 1974))
         .setTimestamp();
       channel.send(errEmbed);
