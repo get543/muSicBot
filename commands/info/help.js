@@ -8,15 +8,11 @@ module.exports = {
       option
         .setName("category")
         .setDescription("What category of the help command ?")
-<<<<<<< HEAD
         .setRequired(true)
         .addChoices(
           { name: "other", value: "other_commands" },
           { name: "music", value: "music_commands" }
         )
-=======
-        .addChoices({ name: "other", value: "other_commands" })
->>>>>>> b8b56a406372fae5ecea80df890182e15b6ab611
     ),
   async execute(interaction) {
     if (interaction.options.getString("category") === "other_commands") {
@@ -62,7 +58,6 @@ module.exports = {
         embeds: [embed],
         components: [new Discord.ActionRowBuilder().addComponents(Buttons)],
       });
-<<<<<<< HEAD
     } else if (interaction.options.getString("category") === "music_commands") {
       const musicEmbed = new Discord.EmbedBuilder()
         .setTitle(`***Music Command*** 🎵`)
@@ -80,7 +75,7 @@ module.exports = {
             name: "/autoplay",
             value: "Turn autoplay on or off. Default to off.",
           },
-          { name: "/loop", value: "pong" },
+          { name: "/loop", value: "Repeat song, queue or disable it." },
           { name: "/nowplaying", value: "Show what music is being played." },
           { name: "/pause", value: "Pause playing music." },
           {
@@ -119,63 +114,5 @@ module.exports = {
 
       return interaction.reply({ embeds: [musicEmbed] });
     }
-=======
-    }
-
-    const musicEmbed = new Discord.EmbedBuilder()
-      .setTitle(`***Music Command*** 🎵`)
-      .setURL("https://youtu.be/Oqrm-9Wy8iU")
-      .setAuthor({
-        name: "Created By : Udin",
-        iconURL:
-          "https://cf.shopee.co.id/file/e75559dfb6f7fb15db4873b5b760abb4",
-        url: "https://cf.shopee.co.id/file/e75559dfb6f7fb15db4873b5b760abb4",
-      })
-      .setDescription("Here are the list of music commands")
-      .setColor(0xf08080)
-      .addFields([
-        {
-          name: "/autoplay",
-          value: "Turn autoplay on or off. Default to off.",
-        },
-        { name: "/loop", value: "pong" },
-        { name: "/nowplaying", value: "Show what music is being played." },
-        { name: "/pause", value: "Pause playing music." },
-        {
-          name: "/play",
-          value: "Play music, supports YouTube, Spotify, and SoundCloud.",
-        },
-        {
-          name: "/playskip",
-          value: `The same as 'play' command but add the music on top of the queue and then skip to it.`,
-        },
-        {
-          name: "/playtop",
-          value: "Add the music to the very top of the queue",
-        },
-        {
-          name: "/queue",
-          value: "Show the queue of what music is playing next.",
-        },
-        { name: "/resume", value: "Resume paused music." },
-        { name: "/seek", value: "Fast forward current playing music." },
-        { name: "/shuffle", value: "Shuffle current queue." },
-        {
-          name: "/skip",
-          value: "Skip now playing music to the next one on the queue.",
-        },
-        {
-          name: "/stop",
-          value: "Stop playing music and leave the voice channel.",
-        },
-      ])
-      .setTimestamp()
-      .setFooter({
-        text: `Requested by: ${interaction.user.username}`,
-        iconURL: interaction.user.displayAvatarURL(),
-      });
-
-    return interaction.reply({ embeds: [musicEmbed] });
->>>>>>> b8b56a406372fae5ecea80df890182e15b6ab611
   },
 };
