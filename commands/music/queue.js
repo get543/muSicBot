@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 
-// queue function
-function generateQueue(queue) {
+// queue embed function
+function generateEmbedQueue(message, queue, duration) {
   const allQueue = [];
   let k = 10;
   for (let i = 0; i < queue.length; i += 10) {
@@ -9,15 +9,24 @@ function generateQueue(queue) {
     let j = i;
     k += 10;
 
-    const sendQueue = current
-      .map(
-        (song) =>
-          `**${++j}.** [${song.name}](<${song.url}>) - \`${
-            song.formattedDuration
-          }\``
-      )
-      .join("\n");
-    allQueue.push(sendQueue);
+    const info = current.map((song) => `**${++j}**. [${song.name}](${song.url}) - \`${song.formattedDuration}\``).join("\n");
+
+    const sendEmbed = new Discord.EmbedBuilder()
+      .setAuthor({ 
+        name: `${message.guild.name}`,
+        iconURL: message.guild.iconURL(),
+      })
+      .setTitle("Music Queue")
+      .setColor(0xF8AA2A)
+      .setDescription(info)
+      .addFields({ name: "\u200b", value: `Requested by: <@${message.user.id}>` })
+      .setTimestamp()
+      .setFooter({ 
+        text: `${duration} left`,
+        iconURL: queue[0].thumbnail,
+      });
+
+    allQueue.push(sendEmbed);
   }
   return allQueue;
 }
@@ -45,14 +54,11 @@ module.exports = {
     try {
       let currentPage = 0;
 
-      const allQueue = generateQueue(queue.songs);
+      const allQueue = generateEmbedQueue(interaction, queue.songs, queue.formattedDuration)
 
       const message = await interaction.reply({
-        content: `**Music Queue:** \t|\t **Current Page: ${currentPage + 1}/${
-          allQueue.length
-        }** \t|\t **Duration: \`${queue.formattedDuration}\`** \n${
-          allQueue[currentPage]
-        }`,
+        content: `**Current Page: ${currentPage + 1}/${allQueue.length}**`,
+        embeds: [allQueue[currentPage]],
         fetchReply: true,
         fetchEdit: true,
       });
@@ -73,11 +79,8 @@ module.exports = {
               currentPage++;
 
               message.edit({
-                content: `**Music Queue:** \t|\t **Current Page: ${
-                  currentPage + 1
-                }/${allQueue.length}** \t|\t **Duration: \`${
-                  queue.formattedDuration
-                }\`** \n${allQueue[currentPage]}`,
+                content: `**Current Page: ${currentPage + 1}/${allQueue.length}**`,
+                embeds: [allQueue[currentPage]],
               });
             }
           } else if (reaction.emoji.name === "❌") {
@@ -91,11 +94,8 @@ module.exports = {
               --currentPage;
 
               message.edit({
-                content: `**Music Queue:** \t|\t **Current Page: ${
-                  currentPage + 1
-                }/${allQueue.length}** \t|\t **Duration: \`${
-                  queue.formattedDuration
-                }\`** \n${allQueue[currentPage]}`,
+                content: `**Current Page: ${currentPage + 1}/${allQueue.length}**`,
+                embeds: [allQueue[currentPage]],
               });
             }
           } else {
