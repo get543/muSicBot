@@ -4,7 +4,7 @@ module.exports = {
   },
   async execute(interaction) {
     await interaction.reply({
-      content: `https://youtu.be/Oqrm-9Wy8iU`,
+      content: `<https://youtu.be/Oqrm-9Wy8iU>`,
     });
   },
 };
