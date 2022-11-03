@@ -23,20 +23,28 @@ module.exports = {
 
     const music = interaction.options.getString("query");
 
-    client.distube
-      .play(interaction.member.voice.channel, music, {
-        textChannel: interaction.channel,
-        member: interaction.member,
-        interaction,
-        position: 1,
-      })
-      .catch((err) => {
-        console.error(err);
-        return interaction.reply({
-          content: `Oops there's an error apparently.`,
-          ephemeral: true,
+    try {
+      client.distube
+        .play(interaction.member.voice.channel, music, {
+          textChannel: interaction.channel,
+          member: interaction.member,
+          interaction,
+          position: 1,
+        })
+        .catch((err) => {
+          console.error(err);
+          return interaction.reply({
+            content: `Oops there's an error apparently.`,
+            ephemeral: true,
+          });
         });
+    } catch (error) {
+      console.error(error);
+      return interaction.reply({
+        content: `Oops there's something wrong with our internal system.`,
+        ephemeral: true,
       });
+    }
 
     await interaction.reply({
       content: "🔃 Loading...",

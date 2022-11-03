@@ -9,19 +9,29 @@ function generateEmbedQueue(message, queue, duration) {
     let j = i;
     k += 10;
 
-    const info = current.map((song) => `**${++j}**. [${song.name}](${song.url}) - \`${song.formattedDuration}\``).join("\n");
+    const info = current
+      .map(
+        (song) =>
+          `**${++j}**. [${song.name}](${song.url}) - \`${
+            song.formattedDuration
+          }\``
+      )
+      .join("\n");
 
     const sendEmbed = new Discord.EmbedBuilder()
-      .setAuthor({ 
+      .setAuthor({
         name: `${message.guild.name}`,
         iconURL: message.guild.iconURL(),
       })
       .setTitle("Music Queue")
-      .setColor(0xF8AA2A)
+      .setColor(0xf8aa2a)
       .setDescription(info)
-      .addFields({ name: "\u200b", value: `Requested by: <@${message.user.id}>` })
+      .addFields({
+        name: "\u200b",
+        value: `Requested by: <@${message.user.id}>`,
+      })
       .setTimestamp()
-      .setFooter({ 
+      .setFooter({
         text: `${duration} left`,
         iconURL: queue[0].thumbnail,
       });
@@ -54,7 +64,11 @@ module.exports = {
     try {
       let currentPage = 0;
 
-      const allQueue = generateEmbedQueue(interaction, queue.songs, queue.formattedDuration)
+      const allQueue = generateEmbedQueue(
+        interaction,
+        queue.songs,
+        queue.formattedDuration
+      );
 
       const message = await interaction.reply({
         content: `**Current Page: ${currentPage + 1}/${allQueue.length}**`,
@@ -79,7 +93,9 @@ module.exports = {
               currentPage++;
 
               message.edit({
-                content: `**Current Page: ${currentPage + 1}/${allQueue.length}**`,
+                content: `**Current Page: ${currentPage + 1}/${
+                  allQueue.length
+                }**`,
                 embeds: [allQueue[currentPage]],
               });
             }
@@ -94,7 +110,9 @@ module.exports = {
               --currentPage;
 
               message.edit({
-                content: `**Current Page: ${currentPage + 1}/${allQueue.length}**`,
+                content: `**Current Page: ${currentPage + 1}/${
+                  allQueue.length
+                }**`,
                 embeds: [allQueue[currentPage]],
               });
             }
