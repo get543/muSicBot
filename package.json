@@ -11,7 +11,7 @@
     "lint": "eslint ./"
   },
   "engines": {
-    "node": "16.18.0"
+    "node": "16.x"
   },
   "author": "Din",
   "license": "ISC",
