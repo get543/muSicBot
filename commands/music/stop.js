@@ -22,7 +22,7 @@ module.exports = {
 
     client.distube.stop(interaction);
     return interaction.reply({
-      content: "⏹ Stop playing music \n👋 Leaving voice channel...",
+      content: "⏹ Stop playing music 👋 Leaving voice channel...",
     });
   },
 };
