@@ -1,23 +1,23 @@
 <h1 align="center">
-   <br>
-   <img 
-      src="https://cdn.discordapp.com/attachments/869408567629873212/1040992476573478923/luthung_kasarung.jpg" 
-      style="border-radius: 50%"
-   >
-   <br>
-   SicBot
-   <br>
+  <br>
+  <img 
+    src="https://cdn.discordapp.com/attachments/869408567629873212/1040992476573478923/luthung_kasarung.jpg" 
+    style="border-radius: 50%"
+  >
+  <br>
+  SicBot
+  <br>
 </h1>
 
 <h5 align="center">
-   Discord Music Bot created using <a href="https://distube.js.org/)">DisTube</a> and 
-   the latest version of <a href="https://discord.js.org">discord.js</a>
+  Discord Music Bot created using <a href="https://distube.js.org/)">DisTube</a> and 
+  the latest version of <a href="https://discord.js.org">discord.js</a>
 </h5>
 
 # 🎉 Features
 
 - [x] Slash Commands
-- [x] YouTube, Spotify, SoundCloud support
+- [x] YouTube, Spotify (buggy for playlist), and SoundCloud support
 - [x] Dynamic Queue System
 
 For more info you can do `/help` for all available music commands
@@ -26,8 +26,8 @@ For more info you can do `/help` for all available music commands
 
 1. Create a new applications [here](https://discord.com/developers/applications)
 
-   - Turn the app into a bot in the 'bot' section
-   - Copy the bot token
+  - Turn the app into a bot in the 'bot' section
+  - Copy the bot token
 
 2. Create a `.env` file in the root directory, containing:
 
