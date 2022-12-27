@@ -5,8 +5,8 @@ const hours = ("0" + currentDate.getHours()).slice(-2);
 const minutes = ("0" + currentDate.getMinutes()).slice(-2);
 const seconds = ("0" + currentDate.getSeconds()).slice(-2);
 
-server.all(`/`, (req, res) => {
-  res.send(`Result: [OK].`);
+server.all("/", (req, res) => {
+  res.send("Result: [OK].");
 });
 
 function keepAlive() {
