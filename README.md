@@ -17,7 +17,7 @@
 # 🎉 Features
 
 - [x] Slash Commands
-- [x] YouTube, Spotify (buggy for playlist), and SoundCloud support
+- [x] YouTube, Spotify (buggy), and SoundCloud support
 - [x] Dynamic Queue System
 
 For more info you can do `/help` for all available music commands
@@ -32,11 +32,11 @@ For more info you can do `/help` for all available music commands
 2. Create a `.env` file in the root directory, containing:
 
 ```
-DISCORD_TOKEN = <paste-your-bot-token-here>
+DISCORD_TOKEN = paste-your-bot-token-here
 
-clientID = <bot's id>
+clientID = bot-id
 
-guildID = <server's id>
+guildID = server-id
 ```
 
 3. Open terminal and navigate to the project folder
