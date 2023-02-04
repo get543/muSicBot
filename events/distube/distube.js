@@ -1,6 +1,4 @@
-const Discord = require("discord.js");
 const { DisTube } = require("distube");
-
 const { SoundCloudPlugin } = require("@distube/soundcloud");
 const { SpotifyPlugin } = require("@distube/spotify");
 const { YtDlpPlugin } = require("@distube/yt-dlp");
@@ -31,38 +29,24 @@ module.exports = async (client) => {
 
     .on("addSong", (queue, song) => {
       queue.textChannel.send(
-        `Added **${song.name}** - \`${song.formattedDuration}\` to the queue`
+        `👍 Added **${song.name}** - \`${song.formattedDuration}\` to the queue 👍`
       );
     })
 
-    // !does not work atm
-    // .on("addList", (queue, playlist) => {
-    //   const playlistEmbed = new Discord.EmbedBuilder()
-    //     .setAuthor({ text: "Added Playlist" })
-    //     .setTitle(playlist.name)
-    //     .setURL(playlist.url)
-    //     .setColor(0x7FFF00)
-    //     .setThumbnail(playlist.thumbnail)
-    //     .setTimestamp()
-    //     .setFooter({
-    //       text: `Requested by: ${playlist.user.username}`,
-    //     });
-    //   queue.textChannel.send(playlistEmbed);
-    // })
+    .on("addList", (queue, playlist) => {
+      queue.textChannel.send(
+        `👍 Added playlist **${playlist.name}** - \`${playlist.formattedDuration}\` to the queue 👍`
+      );
+    })
 
     .on("error", (channel, e) => {
-      const errEmbed = new Discord.EmbedBuilder()
-        .setTitle("An Error Encountered")
-        .setColor(0xf83c14)
-        .setDescription(e.toString().slice(0, 1974))
-        .setTimestamp();
-      channel.send(errEmbed);
+      channel.send("**An Error Encountered** \n", e.toString().slice(0, 1974));
       console.error(e);
     })
 
     .on("finish", (queue) => {
       queue.textChannel.send(
-        `Yey I've finnished the queue. Leaving the voice channel 😥`
+        `Yay I've finnished the queue 😊. Leaving the voice channel 😥`
       );
     })
 

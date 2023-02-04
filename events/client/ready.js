@@ -11,10 +11,10 @@ module.exports = {
       activities: [
         {
           name: "tag me",
-          type: "LISTENING",
-        },
+          type: 2,
+        }
       ],
-      status: "idle",
+      status: "idle"
     });
 
     const rest = new REST({ version: "10" }).setToken(

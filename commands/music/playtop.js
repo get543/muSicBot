@@ -31,13 +31,6 @@ module.exports = {
           interaction,
           position: 1,
         })
-        .catch((err) => {
-          console.error(err);
-          return interaction.reply({
-            content: `Oops there's an error apparently.`,
-            ephemeral: true,
-          });
-        });
     } catch (error) {
       console.error(error);
       return interaction.reply({
