@@ -45,12 +45,8 @@ module.exports = async (client) => {
     })
 
     .on("finish", (queue) => {
-      queue.textChannel.send(
-        `Yay I've finnished the queue 😊. Leaving the voice channel 😥`
-      );
+      queue.textChannel.send(`Yay I've finnished the queue 😊. Leaving the voice channel 😥`);
     })
 
-    .on("empty", (queue) =>
-      queue.textChannel.send(`Channel is empty, so I'm Leaving.. 😢`)
-    );
+    .on("empty", (queue) => queue.textChannel.send(`Channel is empty, so I'm Leaving.. 😢`));
 };

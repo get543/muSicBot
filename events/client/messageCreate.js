@@ -2,11 +2,7 @@ module.exports = {
   name: "messageCreate",
   async execute(message) {
     // exclude @here dan @everyone
-    if (
-      message.content.includes("@here") ||
-      message.content.includes("@everyone")
-    )
-      return false;
+    if (message.content.includes("@here") || message.content.includes("@everyone")) return false;
 
     // bot got mentioned
     if (message.mentions.has("830398358719954944")) {

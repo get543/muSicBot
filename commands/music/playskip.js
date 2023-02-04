@@ -9,16 +9,13 @@ module.exports = {
     .addStringOption((option) =>
       option
         .setName("query")
-        .setDescription(
-          "Put a keyword or link to the music that you want to play."
-        )
+        .setDescription("Put a keyword or link to the music that you want to play.")
         .setRequired(true)
     ),
   async execute(interaction, client) {
     if (!interaction.member.voice.channel) {
       return interaction.reply({
-        content:
-          "Sorry, you must join a voice channel before using this command.",
+        content: "Sorry, you must join a voice channel before using this command.",
         ephemeral: true,
       });
     }

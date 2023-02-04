@@ -17,8 +17,7 @@ module.exports = {
       }
     } else if (interaction.isButton()) {
       const button = client.buttons.get(interaction.customId);
-      if (!button)
-        return new Error("There is no button that match that command.");
+      if (!button) return new Error("There is no button that match that command.");
 
       try {
         await button.execute(interaction, client);

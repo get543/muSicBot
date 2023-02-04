@@ -11,20 +11,14 @@ const client = new Discord.Client({
     Discord.GatewayIntentBits.MessageContent,
     Discord.GatewayIntentBits.GuildMessageReactions,
   ],
-  partials: [
-    Discord.Partials.Message,
-    Discord.Partials.Channel,
-    Discord.Partials.Reaction,
-  ],
+  partials: [Discord.Partials.Message, Discord.Partials.Channel, Discord.Partials.Reaction],
 });
 
 client.commands = new Discord.Collection();
 client.buttons = new Discord.Collection();
 client.commandArray = [];
 
-const handlers = fs
-  .readdirSync("./handlers")
-  .filter((file) => file.endsWith(".js"));
+const handlers = fs.readdirSync("./handlers").filter((file) => file.endsWith(".js"));
 const eventFolders = fs.readdirSync("./events");
 const commandFolders = fs.readdirSync("./commands");
 const componentFolders = fs.readdirSync("./components");

@@ -12,14 +12,12 @@ module.exports = {
         {
           name: "tag me",
           type: 2,
-        }
+        },
       ],
-      status: "idle"
+      status: "idle",
     });
 
-    const rest = new REST({ version: "10" }).setToken(
-      process.env.DISCORD_TOKEN
-    );
+    const rest = new REST({ version: "10" }).setToken(process.env.DISCORD_TOKEN);
 
     if (process.env.guildID) {
       (async () => {
@@ -27,18 +25,13 @@ module.exports = {
           console.log("Registering guild application (/) commands.");
 
           await rest.put(
-            Routes.applicationGuildCommands(
-              process.env.clientID,
-              process.env.guildID
-            ),
+            Routes.applicationGuildCommands(process.env.clientID, process.env.guildID),
             {
               body: client.commandArray,
             }
           );
 
-          console.log(
-            "Successfully registered guild application (/) commands."
-          );
+          console.log("Successfully registered guild application (/) commands.");
         } catch (error) {
           console.error(error);
         }
@@ -52,9 +45,7 @@ module.exports = {
             body: client.commandArray,
           });
 
-          console.log(
-            "Successfully registered global application (/) commands."
-          );
+          console.log("Successfully registered global application (/) commands.");
         } catch (error) {
           console.error(error);
         }

@@ -1,14 +1,11 @@
 const Discord = require("discord.js");
 
 module.exports = {
-  data: new Discord.SlashCommandBuilder()
-    .setName("pause")
-    .setDescription("Pause playing music."),
+  data: new Discord.SlashCommandBuilder().setName("pause").setDescription("Pause playing music."),
   async execute(interaction, client) {
     if (!interaction.member.voice.channel) {
       return interaction.reply({
-        content:
-          "Sorry, you must join a voice channel before using this command",
+        content: "Sorry, you must join a voice channel before using this command",
         ephemeral: true,
       });
     }

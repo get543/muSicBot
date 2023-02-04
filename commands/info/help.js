@@ -21,8 +21,7 @@ module.exports = {
         .setURL("https://youtu.be/Oqrm-9Wy8iU")
         .setAuthor({
           name: "Created By : Udin",
-          iconURL:
-            "https://cf.shopee.co.id/file/e75559dfb6f7fb15db4873b5b760abb4",
+          iconURL: "https://cf.shopee.co.id/file/e75559dfb6f7fb15db4873b5b760abb4",
           url: "https://cf.shopee.co.id/file/e75559dfb6f7fb15db4873b5b760abb4",
         })
         .setDescription(
@@ -64,8 +63,7 @@ module.exports = {
         .setURL("https://youtu.be/Oqrm-9Wy8iU")
         .setAuthor({
           name: "Created By : Udin",
-          iconURL:
-            "https://cf.shopee.co.id/file/e75559dfb6f7fb15db4873b5b760abb4",
+          iconURL: "https://cf.shopee.co.id/file/e75559dfb6f7fb15db4873b5b760abb4",
           url: "https://cf.shopee.co.id/file/e75559dfb6f7fb15db4873b5b760abb4",
         })
         .setDescription("Here are the list of music commands")

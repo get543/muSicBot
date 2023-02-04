@@ -7,16 +7,13 @@ module.exports = {
     .addStringOption((option) =>
       option
         .setName("query")
-        .setDescription(
-          "Put a keyword or link to the music that you want to play."
-        )
+        .setDescription("Put a keyword or link to the music that you want to play.")
         .setRequired(true)
     ),
   async execute(interaction, client) {
     if (!interaction.member.voice.channel) {
       return interaction.reply({
-        content:
-          "Sorry, you must join a voice channel before using this command.",
+        content: "Sorry, you must join a voice channel before using this command.",
         ephemeral: true,
       });
     }
@@ -24,13 +21,12 @@ module.exports = {
     const music = interaction.options.getString("query");
 
     try {
-      client.distube
-        .play(interaction.member.voice.channel, music, {
-          textChannel: interaction.channel,
-          member: interaction.member,
-          interaction,
-          position: 1,
-        })
+      client.distube.play(interaction.member.voice.channel, music, {
+        textChannel: interaction.channel,
+        member: interaction.member,
+        interaction,
+        position: 1,
+      });
     } catch (error) {
       console.error(error);
       return interaction.reply({

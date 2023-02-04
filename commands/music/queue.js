@@ -10,12 +10,7 @@ function generateEmbedQueue(message, queue, duration) {
     k += 10;
 
     const info = current
-      .map(
-        (song) =>
-          `**${++j}**. [${song.name}](${song.url}) - \`${
-            song.formattedDuration
-          }\``
-      )
+      .map((song) => `**${++j}**. [${song.name}](${song.url}) - \`${song.formattedDuration}\``)
       .join("\n");
 
     const sendEmbed = new Discord.EmbedBuilder()
@@ -48,8 +43,7 @@ module.exports = {
   async execute(interaction, client) {
     if (!interaction.member.voice.channel) {
       return interaction.reply({
-        content:
-          "Sorry, you must join a voice channel before using this command.",
+        content: "Sorry, you must join a voice channel before using this command.",
         ephemeral: true,
       });
     }
@@ -64,11 +58,7 @@ module.exports = {
     try {
       let currentPage = 0;
 
-      const allQueue = generateEmbedQueue(
-        interaction,
-        queue.songs,
-        queue.formattedDuration
-      );
+      const allQueue = generateEmbedQueue(interaction, queue.songs, queue.formattedDuration);
 
       const message = await interaction.reply({
         content: `**Current Page: ${currentPage + 1}/${allQueue.length}**`,
@@ -82,8 +72,7 @@ module.exports = {
       await message.react("➡️");
 
       const filter = (reaction, user) =>
-        ["⬅️", "❌", "➡️"].includes(reaction.emoji.name) &&
-        user.id === interaction.user.id;
+        ["⬅️", "❌", "➡️"].includes(reaction.emoji.name) && user.id === interaction.user.id;
       const collector = message.createReactionCollector(filter);
 
       collector.on("collect", async (reaction) => {
@@ -93,26 +82,20 @@ module.exports = {
               currentPage++;
 
               message.edit({
-                content: `**Current Page: ${currentPage + 1}/${
-                  allQueue.length
-                }**`,
+                content: `**Current Page: ${currentPage + 1}/${allQueue.length}**`,
                 embeds: [allQueue[currentPage]],
               });
             }
           } else if (reaction.emoji.name === "❌") {
             message.reactions
               .removeAll()
-              .catch((error) =>
-                console.error("Failed to clear reactions:", error)
-              );
+              .catch((error) => console.error("Failed to clear reactions:", error));
           } else if (reaction.emoji.name === "⬅️") {
             if (currentPage !== 0) {
               --currentPage;
 
               message.edit({
-                content: `**Current Page: ${currentPage + 1}/${
-                  allQueue.length
-                }**`,
+                content: `**Current Page: ${currentPage + 1}/${allQueue.length}**`,
                 embeds: [allQueue[currentPage]],
               });
             }

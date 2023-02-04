@@ -7,16 +7,13 @@ module.exports = {
     .addNumberOption((option) =>
       option
         .setName("amount")
-        .setDescription(
-          "The amount of time (in seconds) you want to fast forward in the music"
-        )
+        .setDescription("The amount of time (in seconds) you want to fast forward in the music")
         .setRequired(true)
     ),
   async execute(interaction, client) {
     if (!interaction.member.voice.channel) {
       return interaction.reply({
-        content:
-          "Sorry, you must join a voice channel before using this command.",
+        content: "Sorry, you must join a voice channel before using this command.",
         ephemeral: true,
       });
     }
