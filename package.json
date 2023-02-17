@@ -1,11 +1,13 @@
 {
-  "name": "music-bot",
+  "name": "sicbot",
   "version": "3.0.0",
-  "description": "Discord music bot built using discord.js",
+  "description": "Discord music bot built using discord.js and distube",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node main.js",
+    "deguild": "node deleteCommands/guild.js",
+    "deglobal": "node deleteCommands/global.js",
     "format": "prettier --write .",
     "build": "npm install",
     "lint": "eslint ./"
@@ -30,12 +32,17 @@
     "express": "^4.18.1",
     "ffmpeg-static": "^5.1.0",
     "fs": "^0.0.1-security",
-    "libsodium-wrappers": "^0.7.10",
+    "libsodium-wrappers": "^0.7.11",
     "node-opus": "^0.3.3",
     "opusscript": "^0.0.8"
   },
   "devDependencies": {
-    "eslint": "^8.30.0",
-    "prettier": "^2.8.1"
-  }
+    "eslint": "^8.34.0",
+    "prettier": "^2.8.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/get543/muSicBot.git"
+  },
+  "homepage": "https://github.com/get543/muSicBot#readme"
 }

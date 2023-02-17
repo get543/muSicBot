@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports = {
   data: new Discord.SlashCommandBuilder()
     .setName("autoplay")
-    .setDescription("Turn autoplay on or off. Default to off."),
+    .setDescription("Toggle autoplay mode. Defaults to off."),
   async execute(interaction, client) {
     if (!interaction.member.voice.channel) {
       return interaction.reply({

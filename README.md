@@ -17,15 +17,15 @@
   <a href="https://github.com/prettier/prettier">
     <img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=plastic&logo=prettier">
   </a>
-  
+
   <a href="https://github.com/eslint/eslint">
     <img src="https://img.shields.io/badge/lint-eslint-blueviolet?style=plastic&logo=eslint">
   </a>
-  
+
   <a href="https://github.com/skick1234/DisTube">
     <img src="https://img.shields.io/badge/music-distube-red?style=plastic&logo=dtube">
   </a>
-  
+
   <a href="https://github.com/motdotla/dotenv">
     <img src="https://img.shields.io/badge/environment%20variables-.env-ECD53F?style=plastic?&logo=dotenv">
   </a>
@@ -69,3 +69,16 @@ npm start
 ```
 
 > Note: Cannot be hosted on cloud. You have to host it yourself
+
+# ❌ Deleting Commands
+Delete registered commands on discord and to avoid confusion of the same commands.
+
+### Delete Global Commands
+```bash
+npm run deglobal
+```
+
+### Delete Guild Commands
+```bash
+npm run deguild
+```

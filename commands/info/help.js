@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports = {
   data: new Discord.SlashCommandBuilder()
     .setName("help")
-    .setDescription("List all available bot commands.")
+    .setDescription(`List all available SicBot commands.`)
     .addStringOption((option) =>
       option
         .setName("category")
