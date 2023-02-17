@@ -71,14 +71,17 @@ npm start
 > Note: Cannot be hosted on cloud. You have to host it yourself
 
 # ❌ Deleting Commands
+
 Delete registered commands on discord and to avoid confusion of the same commands.
 
 ### Delete Global Commands
+
 ```bash
 npm run deglobal
 ```
 
 ### Delete Guild Commands
+
 ```bash
 npm run deguild
 ```
