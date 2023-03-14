@@ -8,7 +8,7 @@ module.exports = {
     let Buttons = [];
 
     Buttons[0] = new Discord.ButtonBuilder()
-      .setLabel("Click to Invite")
+      .setLabel("Click to invite me to your server !")
       .setStyle(Discord.ButtonStyle.Link)
       .setURL(
         "https://discord.com/oauth2/authorize?client_id=830398358719954944&permissions=139690576960&scope=applications.commands%20bot"

@@ -4,7 +4,7 @@ module.exports = {
   data: new Discord.SlashCommandBuilder()
     .setName("playskip")
     .setDescription(
-      `The same as 'play' command but add the music on top of the queue and then skip to it.`
+      "The same as 'play' command but add the music on top of the queue and then skip to it."
     )
     .addStringOption((option) =>
       option
@@ -31,7 +31,7 @@ module.exports = {
     } catch (error) {
       console.error(error);
       return interaction.reply({
-        content: `Oops there's something wrong with our internal system.`,
+        content: "Oops there's something wrong with our internal system.",
         ephemeral: true,
       });
     }

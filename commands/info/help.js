@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 module.exports = {
   data: new Discord.SlashCommandBuilder()
     .setName("help")
-    .setDescription(`List all available SicBot commands.`)
+    .setDescription("List all available SicBot commands.")
     .addStringOption((option) =>
       option
         .setName("category")
@@ -17,7 +17,7 @@ module.exports = {
   async execute(interaction) {
     if (interaction.options.getString("category") === "other_commands") {
       const embed = new Discord.EmbedBuilder()
-        .setTitle(`***Help*** 😭`)
+        .setTitle("***Help*** 😭")
         .setURL("https://youtu.be/Oqrm-9Wy8iU")
         .setAuthor({
           name: "Created By : Udin",
@@ -44,13 +44,13 @@ module.exports = {
       let Buttons = [];
 
       Buttons[0] = new Discord.ButtonBuilder()
-        .setLabel(`My Github Page!`)
+        .setLabel("My Github Page!")
         .setStyle(Discord.ButtonStyle.Link)
         .setURL("https://github.com/get543");
 
       Buttons[1] = new Discord.ButtonBuilder()
         .setEmoji("😁")
-        .setCustomId(`troll`)
+        .setCustomId("troll")
         .setStyle(Discord.ButtonStyle.Danger);
 
       await interaction.reply({
@@ -59,7 +59,7 @@ module.exports = {
       });
     } else if (interaction.options.getString("category") === "music_commands") {
       const musicEmbed = new Discord.EmbedBuilder()
-        .setTitle(`***Music Command*** 🎵`)
+        .setTitle("***Music Command*** 🎵")
         .setURL("https://youtu.be/Oqrm-9Wy8iU")
         .setAuthor({
           name: "Created By : Udin",
@@ -82,11 +82,11 @@ module.exports = {
           },
           {
             name: "/playskip",
-            value: `The same as 'play' command but add the music on top of the queue and then skip to it.`,
+            value: "The 'play' command, but add the music on top of the queue and then skip to it.",
           },
           {
             name: "/playtop",
-            value: "Add the music to the very top of the queue",
+            value: "Add the music to the very top of the queue.",
           },
           {
             name: "/queue",

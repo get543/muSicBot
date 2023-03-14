@@ -30,7 +30,7 @@ module.exports = {
     } catch (error) {
       console.error(error);
       return interaction.reply({
-        content: `Oops there's something wrong with our internal system.`,
+        content: "Oops there's something wrong with our internal system.",
         ephemeral: true,
       });
     }
