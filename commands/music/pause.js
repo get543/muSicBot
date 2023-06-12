@@ -17,6 +17,10 @@ module.exports = {
       });
     }
 
+    if (queue.paused) {
+      return interaction.reply({ content: "The music is currently paused.", ephemeral: true });
+    }
+
     client.distube.pause(interaction);
     return interaction.reply({ content: "⏸ Music paused" });
   },

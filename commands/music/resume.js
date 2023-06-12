@@ -17,6 +17,10 @@ module.exports = {
       });
     }
 
+    if (queue.playing) {
+      return interaction.reply({ content: "The music is currently playing.", ephemeral: true });
+    }
+
     client.distube.resume(interaction);
     return interaction.reply({ content: "▶ Playing music" });
   },
