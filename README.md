@@ -68,7 +68,9 @@ npm install
 npm start
 ```
 
-> Note: Cannot be hosted on cloud. You have to host it yourself
+> Note
+> Cannot be hosted on cloud. You have to host it yourself.
+> If you are using a VPN or anything similar on your machine, it's going to return an error. Disabled it before you ran the bot.
 
 # ❌ Deleting Commands
 
@@ -77,11 +79,11 @@ Delete registered commands on discord and to avoid confusion of the same command
 ### Delete Global Commands
 
 ```bash
-npm run deglobal
+npm run delete:global
 ```
 
 ### Delete Guild Commands
 
 ```bash
-npm run deguild
+npm run delete:guild
 ```
