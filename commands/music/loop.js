@@ -38,9 +38,7 @@ module.exports = {
       return interaction.reply({ content: "🔂 Repeating the queue" });
     } else if (interaction.options.getString("option") === "loop_disable") {
       client.distube.setRepeatMode(interaction, 0);
-      return interaction.reply({
-        content: "❌ Repeat mode is set to disabled",
-      });
+      return interaction.reply({ content: "❌ Repeat mode is set to disabled" });
     }
   },
 };
