@@ -1,7 +1,7 @@
 <h1 align="center">
   <br>
   <img
-    src="https://cdn.discordapp.com/attachments/869408567629873212/1040992476573478923/luthung_kasarung.jpg" 
+    src="./assets/luthung kasarung.jpg" 
     style="border-radius: 50%"
   >
   <br>
