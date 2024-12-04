@@ -7,7 +7,7 @@ module.exports = {
     .addNumberOption((option) =>
       option
         .setName("amount")
-        .setDescription("The amount of time (in seconds) you want to fast forward in the music")
+        .setDescription("The amount of time (seconds) you want to fast forward in the music")
         .setRequired(true)
     ),
   async execute(interaction, client) {
