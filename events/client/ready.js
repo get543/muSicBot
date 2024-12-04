@@ -10,7 +10,7 @@ module.exports = {
     client.user.setPresence({
       activities: [
         {
-          name: "tag me",
+          name: `@${client.user.username}`,
           type: 2,
         },
       ],
