@@ -12,21 +12,19 @@ module.exports = {
       });
     }
 
-    const queue = await client.distube.getQueue(interaction);
-    if (!queue) {
-      return interaction.reply({
-        content: "Queue is empty! 📪",
-      });
-    }
+    try {
+      const song = await client.distube.skip(interaction);
 
-    const next_song = queue.songs[1];
-    if (!next_song) {
-      return interaction.reply({
-        content: "There is no next song to skip to 😢",
-      });
-    }
+      if (!song) {
+        return interaction.reply({
+          content: "Queue is empty! 📪",
+        });
+      }
 
-    client.distube.skip(interaction);
-    return interaction.reply({ content: "⏭ Skipped" });
+      await interaction.reply({ content: "⏭ Skipped" });
+    } catch (error) {
+      console.error(error);
+      return interaction.reply({ content: "**An Error Encountered**" });
+    }
   },
 };

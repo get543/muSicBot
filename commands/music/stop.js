@@ -1,9 +1,7 @@
 const Discord = require("discord.js");
 
 module.exports = {
-  data: new Discord.SlashCommandBuilder()
-    .setName("stop")
-    .setDescription("Stop playing music and leave the voice channel."),
+  data: new Discord.SlashCommandBuilder().setName("stop").setDescription("Stop playing music."),
   async execute(interaction, client) {
     if (!interaction.member.voice.channel) {
       return interaction.reply({
@@ -13,15 +11,15 @@ module.exports = {
     }
 
     const queue = await client.distube.getQueue(interaction);
-    if (!queue) {
-      return interaction.reply({
-        content: "Queue is empty! 📪",
-      });
+
+    await client.distube.stop(interaction);
+
+    if (queue.voice) {
+      queue.voice.leave();
     }
 
-    client.distube.stop(interaction);
-    return interaction.reply({
-      content: "⏹ Stop playing music 👋 Leaving voice channel.",
+    interaction.reply({
+      content: "⏹ Stop playing music.",
     });
   },
 };

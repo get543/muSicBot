@@ -1,24 +1,20 @@
 const { DisTube } = require("distube");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
 const { SpotifyPlugin } = require("@distube/spotify");
-const { YtDlpPlugin } = require("@distube/yt-dlp");
+const { YtDlpPlugin  } = require("@distube/yt-dlp");
+const { YouTubePlugin } = require("@distube/youtube");
 
 module.exports = async (client) => {
   client.distube = new DisTube(client, {
-    searchSongs: 0,
     emitNewSongOnly: true,
-    leaveOnFinish: true,
-    emitAddSongWhenCreatingQueue: false,
-    emitAddListWhenCreatingQueue: false,
+    emitAddSongWhenCreatingQueue: true,
+    emitAddListWhenCreatingQueue: true,
     nsfw: true,
-    ytdlOptions: {
-      quality: "highestaudio",
-      filter: "audioonly",
-    },
-    plugins: [
-      new SpotifyPlugin({ emitEventsAfterFetching: true }),
+    plugins: [ // the order you put here matters
+      new YouTubePlugin(),
+      new SpotifyPlugin(),
       new SoundCloudPlugin(),
-      new YtDlpPlugin({ update: true }),
+      new YtDlpPlugin({ update: true })
     ],
   });
 
@@ -39,14 +35,18 @@ module.exports = async (client) => {
       );
     })
 
-    .on("error", (channel, e) => {
-      channel.send("**An Error Encountered** \n", e.toString().slice(0, 1974));
+    .on("error", (e, queue, song) => {
+      queue.textChannel.send("**An Error Encountered** \n", e.toString().slice(0, 1974));
       console.error(e);
     })
 
     .on("finish", (queue) => {
       queue.textChannel.send("Yay I've finnished the queue 😊. Leaving the voice channel 😥");
+      queue.voice.leave();
     })
 
-    .on("empty", (queue) => queue.textChannel.send("Channel is empty, so I'm Leaving.. 😢"));
+    .on("empty", (queue) => {
+      queue.textChannel.send("Channel is empty, so I'm Leaving.. 😢");
+      queue.voice.leave();
+    });
 };

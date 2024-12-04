@@ -81,14 +81,6 @@ module.exports = {
             value: "Play music, supports YouTube, Spotify, and SoundCloud.",
           },
           {
-            name: "/playskip",
-            value: "The 'play' command, but add the music on top of the queue and then skip to it.",
-          },
-          {
-            name: "/playtop",
-            value: "Add the music to the very top of the queue.",
-          },
-          {
             name: "/queue",
             value: "Show the queue of what music is playing next.",
           },

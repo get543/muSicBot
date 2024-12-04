@@ -17,11 +17,11 @@ module.exports = {
       });
     }
 
-    if (queue.playing) {
+    if (!queue.paused) {
       return interaction.reply({ content: "The music is currently playing.", ephemeral: true });
     }
 
-    client.distube.resume(interaction);
+    await client.distube.resume(interaction);
     return interaction.reply({ content: "▶ Playing music" });
   },
 };
