@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const fs = require("fs");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord.js");
@@ -15,12 +16,8 @@ module.exports = (client) => {
         // With the key as the command name and the value as the exported module
         client.commandArray.push(command.data.toJSON());
         client.commands.set(command.data.name, command);
-        console.table([
-          {
-            "Command Name": command.data.name,
-            "Command Description": command.data.description,
-          },
-        ]);
+
+        console.log(`Loaded command: ${command.data.name}`);
       }
     }
 

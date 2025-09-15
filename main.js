@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const keepAlive = require("./server");
 require("dotenv").config();
 const fs = require("fs");
