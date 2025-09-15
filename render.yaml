@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: muSicBot
+    env: node
+    plan: free
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    autoDeploy: true
+    envVars:
+      - key: DISCORD_TOKEN
+        sync: false

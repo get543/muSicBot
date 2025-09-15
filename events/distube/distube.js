@@ -7,7 +7,7 @@ const { YouTubePlugin } = require("@distube/youtube");
 module.exports = async (client) => {
   client.distube = new DisTube(client, {
     emitNewSongOnly: true,
-    emitAddSongWhenCreatingQueue: true,
+    emitAddSongWhenCreatingQueue: false,
     emitAddListWhenCreatingQueue: true,
     nsfw: true,
     plugins: [ // the order you put here matters
@@ -35,7 +35,7 @@ module.exports = async (client) => {
       );
     })
 
-    .on("error", (e, queue, song) => {
+    .on("error", (e, queue) => {
       queue.textChannel.send("**An Error Encountered** \n", e.toString().slice(0, 1974));
       console.error(e);
     })

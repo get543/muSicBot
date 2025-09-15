@@ -10,18 +10,6 @@ module.exports = {
         .setDescription("Put a keyword or link to the music that you want to play.")
         .setRequired(true)
     ),
-    // .addBooleanOption((option) =>
-    //   option
-    //     .setName("skip")
-    //     .setDescription("Skip the current song (Available if vote skip is off)")
-    //     .setRequired(false),
-    // )
-    // .addIntegerOption(option =>
-    //   option
-    //     .setName("position")
-    //     .setDescription("Position will be added to the queue.")
-    //     .setRequired(false),
-    // ),
   async execute(interaction, client) {
     if (!interaction.member?.voice?.channel) {
       return interaction.reply({
@@ -31,16 +19,12 @@ module.exports = {
     }
 
     const music = interaction.options.getString("query");
-    const skip = interaction.options.getBoolean("skip", false) ?? false;
-    const position = interaction.options.getInteger("position", false) ?? undefined;
 
     try {
       // Defer the reply immediately to prevent timeout
       await interaction.deferReply({ ephemeral: true });
 
       client.distube.play(interaction.member?.voice?.channel, music, {
-        skip,
-        position,
         textChannel: interaction.channel,
         member: interaction.member,
         metadata: { interaction },
