@@ -35,4 +35,4 @@ const componentFolders = fs.readdirSync("./components");
   client.login(process.env.DISCORD_TOKEN);
 })();
 
-keepAlive();
+keepAlive(client);
