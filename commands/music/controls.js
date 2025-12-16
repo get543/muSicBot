@@ -1,7 +1,14 @@
-const Discord = require("discord.js");
+const {
+  SlashCommandBuilder,
+  MessageFlags,
+  EmbedBuilder,
+  ActionRowBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+} = require("discord.js");
 
 module.exports = {
-  data: new Discord.SlashCommandBuilder()
+  data: new SlashCommandBuilder()
     .setName("controls")
     .setDescription(
       "Show music control. You can resume, pause, skip, stop, shuffle and a lot more."
@@ -10,7 +17,7 @@ module.exports = {
     if (!interaction.member.voice.channel) {
       return interaction.reply({
         content: "Sorry, you must join a voice channel before using this command.",
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
       });
     }
 
@@ -18,7 +25,7 @@ module.exports = {
     if (!queue) {
       return interaction.reply({
         content: "No Music Is Being Played.",
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
       });
     }
 
@@ -26,17 +33,17 @@ module.exports = {
     if (!song) {
       return interaction.reply({
         content: "No Music Is Being Played.",
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
       });
     }
 
     // Defer the reply immediately to prevent timeout
-    await interaction.deferReply({ ephemeral: true });
+    await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
     const actualSeek = queue.formattedCurrentTime;
     const finalTotal = song.formattedDuration;
 
-    const npEmbed = new Discord.EmbedBuilder()
+    const npEmbed = new EmbedBuilder()
       .setColor(0x6495ed)
       .setAuthor({ name: "🎵 Now Playing 🎵" })
       .setTitle(song.name)
@@ -52,34 +59,34 @@ module.exports = {
     // Buttons
     let Buttons = [];
 
-    Buttons[0] = new Discord.ButtonBuilder()
+    Buttons[0] = new ButtonBuilder()
       .setEmoji("▶️")
       .setCustomId("resume")
-      .setStyle(Discord.ButtonStyle.Primary);
+      .setStyle(ButtonStyle.Primary);
 
-    Buttons[1] = new Discord.ButtonBuilder()
+    Buttons[1] = new ButtonBuilder()
       .setEmoji("⏸")
       .setCustomId("pause")
-      .setStyle(Discord.ButtonStyle.Primary);
+      .setStyle(ButtonStyle.Primary);
 
-    Buttons[2] = new Discord.ButtonBuilder()
+    Buttons[2] = new ButtonBuilder()
       .setEmoji("⏹️")
       .setCustomId("stop")
-      .setStyle(Discord.ButtonStyle.Primary);
+      .setStyle(ButtonStyle.Primary);
 
-    Buttons[3] = new Discord.ButtonBuilder()
+    Buttons[3] = new ButtonBuilder()
       .setEmoji("🔀")
       .setCustomId("shuffle")
-      .setStyle(Discord.ButtonStyle.Primary);
+      .setStyle(ButtonStyle.Primary);
 
-    Buttons[4] = new Discord.ButtonBuilder()
+    Buttons[4] = new ButtonBuilder()
       .setEmoji("⏭️")
       .setCustomId("skip")
-      .setStyle(Discord.ButtonStyle.Primary);
+      .setStyle(ButtonStyle.Primary);
 
     const message = await interaction.editReply({
       embeds: [npEmbed],
-      components: [new Discord.ActionRowBuilder().addComponents(Buttons)],
+      components: [new ActionRowBuilder().addComponents(Buttons)],
       fetchReply: true,
       fetchEdit: true,
     });

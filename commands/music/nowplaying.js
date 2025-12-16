@@ -1,14 +1,14 @@
-const Discord = require("discord.js");
+const { SlashCommandBuilder, MessageFlags, EmbedBuilder } = require("discord.js");
 
 module.exports = {
-  data: new Discord.SlashCommandBuilder()
+  data: new SlashCommandBuilder()
     .setName("nowplaying")
     .setDescription("Show what music is being played."),
   async execute(interaction, client) {
     if (!interaction.member.voice.channel) {
       return interaction.reply({
         content: "Sorry, you must join a voice channel before using this command.",
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
       });
     }
 
@@ -16,7 +16,7 @@ module.exports = {
     if (!queue) {
       return interaction.reply({
         content: "No Music Is Being Played.",
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
       });
     }
 
@@ -24,7 +24,7 @@ module.exports = {
     if (!song) {
       return interaction.reply({
         content: "No Music Is Being Played.",
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
       });
     }
 
@@ -32,7 +32,7 @@ module.exports = {
       const actualSeek = queue.formattedCurrentTime;
       const finalTotal = song.formattedDuration;
 
-      const npEmbed = new Discord.EmbedBuilder()
+      const npEmbed = new EmbedBuilder()
         .setColor(0x7fff00)
         .setAuthor({ name: "🎵 Now Playing 🎵" })
         .setTitle(song.name)
@@ -50,7 +50,7 @@ module.exports = {
       console.error(error);
       return interaction.reply({
         content: "Opps an error 😢 Still trying to fix it 😖.",
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
       });
     }
   },

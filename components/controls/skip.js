@@ -1,5 +1,5 @@
 // NOT WORKING AS INTENDED
-const Discord = require("discord.js");
+const { EmbedBuilder, MessageFlags } = require("discord.js");
 const { message } = require("../../commands/music/controls");
 
 module.exports = {
@@ -10,7 +10,7 @@ module.exports = {
     if (!interaction.member.voice.channel) {
       return interaction.reply({
         content: "Sorry, you must join a voice channel before using this command.",
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
       });
     }
 
@@ -18,7 +18,7 @@ module.exports = {
     if (!queue) {
       return interaction.reply({
         content: "Queue is empty! 📪",
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
       });
     }
 
@@ -26,7 +26,7 @@ module.exports = {
     if (!next_song) {
       return interaction.reply({
         content: "There is no next song to skip to 😢",
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
       });
     }
 
@@ -35,7 +35,7 @@ module.exports = {
     const actualSeek = queue.formattedCurrentTime;
     const finalTotal = next_song.formattedDuration;
 
-    const npEmbed = new Discord.EmbedBuilder()
+    const npEmbed = new EmbedBuilder()
       .setColor(0x6495ed)
       .setAuthor({ name: "🎵 Now Playing 🎵" })
       .setTitle(next_song.name)

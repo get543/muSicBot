@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder, MessageFlags } = require("discord.js");
 
 // queue embed function
 function generateEmbedQueue(message, queue, duration) {
@@ -13,7 +13,7 @@ function generateEmbedQueue(message, queue, duration) {
       .map((song) => `**${++j}**. [${song.name}](${song.url}) - \`${song.formattedDuration}\``)
       .join("\n");
 
-    const sendEmbed = new Discord.EmbedBuilder()
+    const sendEmbed = new EmbedBuilder()
       .setAuthor({
         name: `${message.guild.name}`,
         iconURL: message.guild.iconURL(),
@@ -37,14 +37,14 @@ function generateEmbedQueue(message, queue, duration) {
 }
 
 module.exports = {
-  data: new Discord.SlashCommandBuilder()
+  data: new SlashCommandBuilder()
     .setName("queue")
     .setDescription("Show the queue of what music is playing next."),
   async execute(interaction, client) {
     if (!interaction.member.voice.channel) {
       return interaction.reply({
         content: "Sorry, you must join a voice channel before using this command.",
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
       });
     }
 
@@ -101,22 +101,22 @@ module.exports = {
             }
           } else {
             collector.stop();
-            message.reply("please don't do that");
+            message.reply("Please don't do that");
           }
           await reaction.users.remove(interaction.user.id);
         } catch (error) {
           console.error(error);
           return interaction.reply({
             content: "Error 😢",
-            ephemeral: true,
+            flags: MessageFlags.Ephemeral,
           });
         }
       });
     } catch (error) {
       console.error(error);
       return interaction.reply({
-        content: "Opps an error 😢 Still trying to fix it 😖.",
-        ephemeral: true,
+        content: "Opps an error 😢 \nStill trying to fix it 😖.",
+        flags: MessageFlags.Ephemeral,
       });
     }
   },

@@ -1,7 +1,13 @@
-const Discord = require("discord.js");
+const {
+  SlashCommandBuilder,
+  EmbedBuilder,
+  ActionRowBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+} = require("discord.js");
 
 module.exports = {
-  data: new Discord.SlashCommandBuilder()
+  data: new SlashCommandBuilder()
     .setName("help")
     .setDescription("List all available SicBot commands.")
     .addStringOption((option) =>
@@ -16,7 +22,7 @@ module.exports = {
     ),
   async execute(interaction) {
     if (interaction.options.getString("category") === "other_commands") {
-      const embed = new Discord.EmbedBuilder()
+      const embed = new EmbedBuilder()
         .setTitle("***Help*** 😭")
         .setURL("https://youtu.be/Oqrm-9Wy8iU")
         .setAuthor({
@@ -43,22 +49,22 @@ module.exports = {
 
       let Buttons = [];
 
-      Buttons[0] = new Discord.ButtonBuilder()
+      Buttons[0] = new ButtonBuilder()
         .setLabel("My Github Page!")
-        .setStyle(Discord.ButtonStyle.Link)
+        .setStyle(ButtonStyle.Link)
         .setURL("https://github.com/get543");
 
-      Buttons[1] = new Discord.ButtonBuilder()
+      Buttons[1] = new ButtonBuilder()
         .setEmoji("😁")
         .setCustomId("troll")
-        .setStyle(Discord.ButtonStyle.Danger);
+        .setStyle(ButtonStyle.Danger);
 
       await interaction.reply({
         embeds: [embed],
-        components: [new Discord.ActionRowBuilder().addComponents(Buttons)],
+        components: [new ActionRowBuilder().addComponents(Buttons)],
       });
     } else if (interaction.options.getString("category") === "music_commands") {
-      const musicEmbed = new Discord.EmbedBuilder()
+      const musicEmbed = new EmbedBuilder()
         .setTitle("***Music Command*** 🎵")
         .setURL("https://youtu.be/Oqrm-9Wy8iU")
         .setAuthor({

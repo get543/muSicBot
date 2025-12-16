@@ -1,3 +1,5 @@
+const { MessageFlags } = require("discord.js");
+
 module.exports = {
   data: {
     name: "resume",
@@ -6,7 +8,7 @@ module.exports = {
     if (!interaction.member.voice.channel) {
       return interaction.reply({
         content: "Sorry, you must join a voice channel before using this command.",
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
       });
     }
 
@@ -18,10 +20,16 @@ module.exports = {
     }
 
     if (queue.playing) {
-      return interaction.reply({ content: "The music is currently playing.", ephemeral: true });
+      return interaction.reply({
+        content: "The music is currently playing.",
+        flags: MessageFlags.Ephemeral,
+      });
     }
 
     client.distube.resume(interaction);
-    await interaction.reply({ content: "▶ Playing music", ephemeral: true });
+    await interaction.reply({
+      content: "▶ Playing music",
+      flags: MessageFlags.Ephemeral,
+    });
   },
 };

@@ -1,3 +1,5 @@
+const { MessageFlags } = require("discord.js");
+
 module.exports = {
   data: {
     name: "shuffle",
@@ -18,6 +20,9 @@ module.exports = {
     }
 
     client.distube.shuffle(interaction);
-    await interaction.reply({ content: "🔀 Shuffle queue", ephemeral: true });
+    await interaction.reply({
+      content: "🔀 Shuffle queue",
+      flags: MessageFlags.Ephemeral,
+    });
   },
 };

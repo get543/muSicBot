@@ -1,7 +1,7 @@
-const Discord = require("discord.js");
+const { SlashCommandBuilder } = require("discord.js");
 
 module.exports = {
-  data: new Discord.SlashCommandBuilder()
+  data: new SlashCommandBuilder()
     .setName("echo")
     .setDescription("Replies the same as what you typed in.")
     .addStringOption((option) =>

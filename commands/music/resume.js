@@ -1,12 +1,12 @@
-const Discord = require("discord.js");
+const { SlashCommandBuilder, MessageFlags } = require("discord.js");
 
 module.exports = {
-  data: new Discord.SlashCommandBuilder().setName("resume").setDescription("Resume paused music."),
+  data: new SlashCommandBuilder().setName("resume").setDescription("Resume paused music."),
   async execute(interaction, client) {
     if (!interaction.member.voice.channel) {
       return interaction.reply({
         content: "Sorry, you must join a voice channel before using this command.",
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
       });
     }
 
@@ -18,7 +18,10 @@ module.exports = {
     }
 
     if (!queue.paused) {
-      return interaction.reply({ content: "The music is currently playing.", ephemeral: true });
+      return interaction.reply({
+        content: "The music is currently playing.",
+        flags: MessageFlags.Ephemeral,
+      });
     }
 
     await client.distube.resume(interaction);

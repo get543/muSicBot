@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord.js");
 

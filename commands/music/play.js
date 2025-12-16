@@ -1,7 +1,7 @@
-const Discord = require("discord.js");
+const { SlashCommandBuilder, MessageFlags } = require("discord.js");
 
 module.exports = {
-  data: new Discord.SlashCommandBuilder()
+  data: new SlashCommandBuilder()
     .setName("play")
     .setDescription("Play music, supports YouTube, Spotify, and SoundCloud.")
     .addStringOption((option) =>
@@ -14,17 +14,16 @@ module.exports = {
     if (!interaction.member?.voice?.channel) {
       return interaction.reply({
         content: "Sorry, you must join a voice channel before using this command.",
-        ephemeral: true,
+        flags: MessageFlags.Ephemeral,
       });
     }
 
     const music = interaction.options.getString("query");
 
     try {
-      // Defer the reply immediately to prevent timeout
-      await interaction.deferReply({ ephemeral: true });
+      await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 
-      client.distube.play(interaction.member?.voice?.channel, music, {
+      await client.distube.play(interaction.member.voice.channel, music, {
         textChannel: interaction.channel,
         member: interaction.member,
         metadata: { interaction },
@@ -53,9 +52,16 @@ module.exports = {
       }
 
       // Generic error handling
-      return interaction.editReply({
-        content: "Oops, there was an error playing the music. Please try again.",
-      });
+      if (interaction.deferred || interaction.replied) {
+        return interaction.editReply({
+          content: "Oops, there was an error playing the music. Please try again.",
+        });
+      } else {
+        return interaction.reply({
+          content: "Oops, there was an error playing the music. Please try again.",
+          flags: MessageFlags.Ephemeral,
+        });
+      }
     }
   },
 };

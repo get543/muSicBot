@@ -1,7 +1,7 @@
 const { DisTube } = require("distube");
 const { SoundCloudPlugin } = require("@distube/soundcloud");
 const { SpotifyPlugin } = require("@distube/spotify");
-const { YtDlpPlugin  } = require("@distube/yt-dlp");
+const { YtDlpPlugin } = require("@distube/yt-dlp");
 const { YouTubePlugin } = require("@distube/youtube");
 
 module.exports = async (client) => {
@@ -10,11 +10,12 @@ module.exports = async (client) => {
     emitAddSongWhenCreatingQueue: false,
     emitAddListWhenCreatingQueue: true,
     nsfw: true,
-    plugins: [ // the order you put here matters
+    plugins: [
+      // the order you put here matters
       new YouTubePlugin(),
       new SpotifyPlugin(),
       new SoundCloudPlugin(),
-      new YtDlpPlugin({ update: true })
+      new YtDlpPlugin({ update: true }),
     ],
   });
 

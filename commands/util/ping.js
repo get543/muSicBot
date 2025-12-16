@@ -1,11 +1,9 @@
-const Discord = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 
 module.exports = {
-  data: new Discord.SlashCommandBuilder()
-    .setName("ping")
-    .setDescription("Run this to measure my ping."),
+  data: new SlashCommandBuilder().setName("ping").setDescription("Run this to measure my ping."),
   async execute(interaction, client) {
-    const embed = new Discord.EmbedBuilder()
+    const embed = new EmbedBuilder()
       .setColor(0x38761d)
       .setTimestamp()
       .setTitle("🏓 ╎ Pong!")
