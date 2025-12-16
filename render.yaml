@@ -9,3 +9,5 @@ services:
     envVars:
       - key: DISCORD_TOKEN
         sync: false
+      - key: CLIENT_ID
+        sync: false
